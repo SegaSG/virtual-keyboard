@@ -282,3 +282,20 @@ textarea.addEventListener('keydown', (e) => {
     }
   });
 });
+
+//  implement animation on shift click
+document.addEventListener('keydown', (ev) => {
+  if (ev.key === 'Shift') {
+    arraySymbols.forEach((item, index) => {
+      item.innerHTML = keysValues[index + 1][1][2];
+    });
+  }
+});
+
+document.addEventListener('keyup', (evn) => {
+  if (evn.key === 'Shift') {
+    arraySymbols.forEach((item, index) => {
+      item.innerHTML = keysValues[index + 1][1][1];
+    });
+  }
+});
