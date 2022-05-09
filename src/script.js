@@ -399,3 +399,34 @@ keyboardContent.addEventListener('click', (e) => {
     });
   }  
 });
+
+// implement switch languages (en/ru)
+
+if (localStorage.getItem('lang')) {
+  const lang = localStorage.getItem('lang');
+  langEn = lang;
+}
+
+function changeBtn() {
+  keysArray.forEach((item, index) => {
+    (item.innerHTML = keysValues[index][1][langEn]);
+  });
+}
+
+document.onkeydown = function changeLang(event) {
+  if (event.code === 'ShiftLeft') {
+    document.onkeyup = function showLang(e) {
+      if (e.code === 'AltLeft') {
+        if (langEn === 0 || langEn === null || langEn === '0') {
+          langEn = 1;
+        } else {
+          langEn = 0;
+        }
+        localStorage.setItem('lang', langEn);
+        changeBtn();
+      } else {
+        document.onkeyup = null;
+      }
+    };
+  }
+};
