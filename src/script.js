@@ -47,7 +47,7 @@ function addElements() {
   keyboardRowFifth.className = 'keyboard__row';
   keyboardInfo.className = 'keyboard__info';
   keyboardInfoTextLang.className = 'keyboard__info-text';
-  keyboardInfoTextLang.innerHTML = 'Switch languages: left shift + left alt';
+  keyboardInfoTextLang.innerHTML = 'Switch languages: left ctrl + left alt';
   keyboardInfoTextWin.className = 'keyboard__info-text';
   keyboardInfoTextWin.innerHTML = 'Keyboard for Windows';
 
