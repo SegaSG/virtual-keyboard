@@ -24,3 +24,144 @@ const keys = new Map([
 ]);
 
 let langEn = 0;
+
+// add basic elements on page
+
+const keysValues = Array.from(keys);
+function addElements() {
+  wrapper.className = 'wrapper';
+  container.className = 'container';
+  keyboard.className = 'keyboard';
+  keyboardTitle.className = 'keyboard__title';
+  keyboardTitle.innerHTML = 'Virtual Keyboard';
+  keyboardBox.className = 'keyboard__box';
+  textarea.className = 'keyboard__box-text';
+  keyboardContent.className = 'keyboard__content';
+  keyboardRowFirst.className = 'keyboard__row';
+  keyboardRowSecond.className = 'keyboard__row';
+  keyboardRowThird.className = 'keyboard__row';
+  keyboardRowFourth.className = 'keyboard__row';
+  keyboardRowFifth.className = 'keyboard__row';
+  keyboardInfo.className = 'keyboard__info';
+  keyboardInfoTextLang.className = 'keyboard__info-text';
+  keyboardInfoTextLang.innerHTML = 'Switch languages: left shift + left alt';
+  keyboardInfoTextWin.className = 'keyboard__info-text';
+  keyboardInfoTextWin.innerHTML = 'Keyboard for Windows';
+
+  document.body.append(wrapper);
+  document.querySelector('.wrapper').append(container);
+  document.querySelector('.container').append(keyboard);
+  document.querySelector('.keyboard').append(keyboardTitle);
+  document.querySelector('.keyboard').append(keyboardBox);
+  document.querySelector('.keyboard').append(keyboardContent);
+  document.querySelector('.keyboard__box').append(textarea);
+
+  document.querySelector('.keyboard__content').append(keyboardRowFirst);
+  for (let i = 0; i < 14; i += 1) {
+    const key = document.createElement('div');
+    key.className = 'key';
+    key.innerHTML = keysValues[i][1][langEn];
+    keyboardRowFirst.append(key);
+    if (i === 13) {
+      key.className = 'key key-backspace';
+    }
+    if (i === 0) {
+      key.className = 'key capital-letter';
+    }
+    if (i > 0 && i < 13) {
+      key.className = 'key key-symbol';
+    }
+  }
+
+  document.querySelector('.keyboard__content').append(keyboardRowSecond);
+  for (let i = 14; i < 29; i += 1) {
+    const key = document.createElement('div');
+    key.className = 'key capital-letter';
+    key.innerHTML = keysValues[i][1][langEn];
+    keyboardRowSecond.append(key);
+    if (i === 14) {
+      key.className = 'key key-tab';
+    }
+    if (i === 28) {
+      key.className = 'key key-del';
+    }
+  }
+  
+  document.querySelector('.keyboard__content').append(keyboardRowThird);
+  for (let i = 29; i < 42; i += 1) {
+    const key = document.createElement('div');
+    key.className = 'key capital-letter';
+    key.innerHTML = keysValues[i][1][langEn];
+    keyboardRowThird.append(key);
+    if (i === 29) {
+      key.className = 'key key-caps';
+    }
+    if (i === 41) {
+      key.className = 'key key-enter';
+    }
+  }  
+
+  document.querySelector('.keyboard__content').append(keyboardRowFourth);
+  for (let i = 42; i < 55; i += 1) {
+    const key = document.createElement('div');
+    key.className = 'key capital-letter';
+    key.innerHTML = keysValues[i][1][langEn];
+    keyboardRowFourth.append(key);
+    if (i === 42) {
+      key.className = 'key key-shift';
+    }
+    if (i === 54) {
+      key.className = 'key key-shift';
+    }
+    if (i === 52) {
+      key.className = 'key key-symbol';
+    }
+    if (i === 51) {
+      key.className = 'key key-symbol';
+    }
+    if (i === 50) {
+      key.className = 'key key-symbol';
+    }
+  }  
+
+  document.querySelector('.keyboard__content').append(keyboardRowFifth);
+  for (let i = 55; i < 64; i += 1) {
+    const key = document.createElement('div');
+    key.className = 'key';
+    key.innerHTML = keysValues[i][1][langEn];
+    keyboardRowFifth.append(key);
+    if (i === 55) {
+      key.className = 'key key-ctrl';
+    }
+    
+    if (i === 56) {
+      key.className = 'key key-win';
+    }
+    if (i === 57) {
+      key.className = 'key key-alt';
+    }
+    if (i === 58 ) {
+      key.className = 'key key-space';
+    }
+    if (i === 59) {
+      key.className = 'key key-alt';
+    }
+    if (i === 60) {
+      key.className = 'key key-left';
+    }
+    if (i === 61) {
+      key.className = 'key key-down';
+    }
+    if (i === 62) {
+      key.className = 'key key-right';
+    }
+    if (i === 63) {
+      key.className = 'key key-ctrl';
+    }
+  }  
+
+  document.querySelector('.keyboard').append(keyboardInfo);
+  document.querySelector('.keyboard__info').prepend(keyboardInfoTextLang);
+  document.querySelector('.keyboard__info').append(keyboardInfoTextWin);
+}
+addElements();
