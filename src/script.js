@@ -350,3 +350,26 @@ document.addEventListener('keyup', (e) => {
     }
   });
 });
+
+// implement animation on mouse click
+document.addEventListener('click', (e) => {
+  function keyAnimation() {
+    e.target.classList.remove('animate-keyboard');
+  }
+  if (e.target.classList.contains('key')) {
+    e.target.classList.add('animate-keyboard');
+    e.target.addEventListener('animationend', keyAnimation, false);
+  }
+});
+
+document.addEventListener('mousedown', (e) => {
+  if (e.target.classList.contains('key')) {
+    e.target.style.background = 'yellow';
+  }
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (e.target.classList.contains('key')) {
+    e.target.style.backgroundColor = '#FFFFFF';
+  }
+});
