@@ -87,6 +87,7 @@ body {
 
 .animate-keyboard {
 	animation: key-animate 0.1s ease;
+    
 }
 
 .capital-letter{

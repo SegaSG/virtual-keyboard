@@ -18,13 +18,16 @@ const keyboardInfoTextWin = document.createElement('div');
 const keys = new Map([
   ['ё', ['`', 'ё', '~']], ['1', ['1', '1', '!']], ['2', ['2', '2', '@']], ['3', ['3', '3', '#']], ['4', ['4', '4', '$']], ['5', ['5', '5', '%']], ['6', ['6', '6', '^']], ['7', ['7', '7', '&']], ['8', ['8', '8', '*']], ['9', ['9', '9', '(']], ['0', ['0', '0', ')']], ['-', ['-', '-', '_']], ['=', ['=', '=', '+']], ['backspace', ['backspace', 'backspace']],
   ['tab', ['tab', 'tab']], ['й', ['q', 'й']], ['ц', ['w', 'ц']], ['у', ['e', 'у']], ['к', ['r', 'к']], ['е', ['t', 'е']], ['н', ['y', 'н']], ['г', ['u', 'г']], ['ш', ['i', 'ш']], ['щ', ['o', 'щ']], ['з', ['p', 'з']], ['х', ['[', 'х', '{']], ['ъ', [']', 'ъ', '}']], ['\\', ['\\', '\\', '|']], ['del', ['del', 'del', 'delete']],
-  ['caps lock', ['caps lock', 'caps lock']], ['ф', ['a', 'ф']], ['ы', ['s', 'ы']], ['в', ['d', 'в']], ['а', ['f', 'а']], ['п', ['g', 'п']], ['р', ['h', 'р']], ['о', ['j', 'о']], ['л', ['k', 'л']], ['д', ['l', 'д']], ['ж', [';', 'ж', ':']], ['э', ["'", 'э', '"']], ['enter', ['enter', 'enter']],
-  ['shift', ['shift', 'shift', 'shiftLeft']], ['я', ['z', 'я']], ['ч', ['x', 'ч']], ['с', ['с', 'c']], ['м', ['v', 'м']], ['и', ['b', 'и']], ['т', ['n', 'т']], ['ь', ['m', 'ь']], ['б', [',', 'б', '<']], ['.', ['.', 'ю', '>']], ['/', ['/', '.', '?']], ['&#5169', ['&#5169', '&#5169', 'arrowUp']], [' shift', [' shift', ' shift', 'shiftRight']],
-  ['ctrl', ['ctrl', 'ctrl', 'ctrlLeft']], ['win', ['win', 'win', 'meta']], ['alt', ['alt', 'alt', 'altLeft']], [' ', [' ', ' ']], [' alt', [' alt', ' alt', 'altRight']], ['&#5176', ['&#5176', '&#5176', 'arrowleft']], ['&#5167', ['&#5167', '&#5167', 'arrowdown']], ['&#5171', ['&#5171', '&#5171', 'arrowRight']], [' ctrl', [' ctrl', ' ctrl', 'ctrlRight']],
+  ['caps lock', ['caps lock', 'CapsLock']], ['ф', ['a', 'ф']], ['ы', ['s', 'ы']], ['в', ['d', 'в']], ['а', ['f', 'а']], ['п', ['g', 'п']], ['р', ['h', 'р']], ['о', ['j', 'о']], ['л', ['k', 'л']], ['д', ['l', 'д']], ['ж', [';', 'ж', ':']], ['э', ["'", 'э', '"']], ['enter', ['enter', 'enter']],
+  ['shift', ['shift', 'shift', 'ShiftLeft']], ['я', ['z', 'я']], ['ч', ['x', 'ч']], ['с', ['с', 'c']], ['м', ['v', 'м']], ['и', ['b', 'и']], ['т', ['n', 'т']], ['ь', ['m', 'ь']], ['б', [',', 'б', '<']], ['.', ['.', 'ю', '>']], ['/', ['/', '.', '?']], ['&#5169', ['&#5169', '&#5169', 'arrowUp']], [' shift', [' shift', ' shift', 'ShiftRight']],
+  ['ctrl', ['ctrl', 'ctrl', 'ControlLeft']], ['win', ['win', 'win', 'meta']], ['alt', ['alt', 'alt', 'AltLeft']], [' ', [' ', ' ']], [' alt', [' alt', ' alt', 'AltRight']], ['&#5176', ['&#5176', '&#5176', 'arrowleft']], ['&#5167', ['&#5167', '&#5167', 'arrowDown']], ['&#5171', ['&#5171', '&#5171', 'arrowRight']], [' ctrl', [' ctrl', ' ctrl', 'ControlRight']],
 ]);
 
-let langEn = 0;
-
+let langCur = 0;
+if (localStorage.getItem('record')) {
+  const lang = localStorage.getItem('record');
+  langCur = lang;
+}
 // add basic elements on page
 
 const keysValues = Array.from(keys);
@@ -60,13 +63,13 @@ function addElements() {
   for (let i = 0; i < 14; i += 1) {
     const key = document.createElement('div');
     key.className = 'key';
-    key.innerHTML = keysValues[i][1][langEn];
+    key.innerHTML = keysValues[i][1][langCur];
     keyboardRowFirst.append(key);
     if (i === 13) {
       key.className = 'key key-backspace';
     }
     if (i === 0) {
-      key.className = 'key capital-letter';
+      key.className = 'key capital-letter key-symbol';
     }
     if (i > 0 && i < 13) {
       key.className = 'key key-symbol';
@@ -77,7 +80,7 @@ function addElements() {
   for (let i = 14; i < 29; i += 1) {
     const key = document.createElement('div');
     key.className = 'key capital-letter';
-    key.innerHTML = keysValues[i][1][langEn];
+    key.innerHTML = keysValues[i][1][langCur];
     keyboardRowSecond.append(key);
     if (i === 14) {
       key.className = 'key key-tab';
@@ -86,12 +89,12 @@ function addElements() {
       key.className = 'key key-del';
     }
   }
-  
+
   document.querySelector('.keyboard__content').append(keyboardRowThird);
   for (let i = 29; i < 42; i += 1) {
     const key = document.createElement('div');
     key.className = 'key capital-letter';
-    key.innerHTML = keysValues[i][1][langEn];
+    key.innerHTML = keysValues[i][1][langCur];
     keyboardRowThird.append(key);
     if (i === 29) {
       key.className = 'key key-caps';
@@ -99,48 +102,48 @@ function addElements() {
     if (i === 41) {
       key.className = 'key key-enter';
     }
-  }  
+  }
 
   document.querySelector('.keyboard__content').append(keyboardRowFourth);
   for (let i = 42; i < 55; i += 1) {
     const key = document.createElement('div');
     key.className = 'key capital-letter';
-    key.innerHTML = keysValues[i][1][langEn];
+    key.innerHTML = keysValues[i][1][langCur];
     keyboardRowFourth.append(key);
     if (i === 42) {
       key.className = 'key key-shift';
     }
-    if (i === 54) {
-      key.className = 'key key-shift';
-    }
-    if (i === 52) {
+    if (i === 50) {
       key.className = 'key key-symbol';
     }
     if (i === 51) {
       key.className = 'key key-symbol';
     }
-    if (i === 50) {
+    if (i === 52) {
       key.className = 'key key-symbol';
     }
-  }  
+    if (i === 54) {
+      key.className = 'key key-shift';
+    }
+  }
 
   document.querySelector('.keyboard__content').append(keyboardRowFifth);
   for (let i = 55; i < 64; i += 1) {
     const key = document.createElement('div');
     key.className = 'key';
-    key.innerHTML = keysValues[i][1][langEn];
+    key.innerHTML = keysValues[i][1][langCur];
     keyboardRowFifth.append(key);
     if (i === 55) {
       key.className = 'key key-ctrl';
     }
-    
+
     if (i === 56) {
       key.className = 'key key-win';
     }
     if (i === 57) {
       key.className = 'key key-alt';
     }
-    if (i === 58 ) {
+    if (i === 58) {
       key.className = 'key key-space';
     }
     if (i === 59) {
@@ -158,7 +161,7 @@ function addElements() {
     if (i === 63) {
       key.className = 'key key-ctrl';
     }
-  }  
+  }
 
   document.querySelector('.keyboard').append(keyboardInfo);
   document.querySelector('.keyboard__info').prepend(keyboardInfoTextLang);
@@ -169,12 +172,13 @@ addElements();
 const arraySymbols = document.querySelectorAll('.key-symbol');
 const keysArray = document.querySelectorAll('.key');
 
-// implement text printing in textarea 
+// implement text printing in textarea
 
 class Foc {
   constructor(field) {
     this.field = field;
   }
+
   textFoc() {
     this.field.focus();
   }
@@ -284,16 +288,16 @@ textarea.addEventListener('keydown', (e) => {
 });
 
 //  implement animation on shift click
-document.addEventListener('keydown', (ev) => {
-  if (ev.key === 'Shift') {
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Shift') {
     arraySymbols.forEach((item, index) => {
       item.innerHTML = keysValues[index + 1][1][2];
     });
   }
 });
 
-document.addEventListener('keyup', (evn) => {
-  if (evn.key === 'Shift') {
+document.addEventListener('keyup', (e) => {
+  if (e.key === 'Shift') {
     arraySymbols.forEach((item, index) => {
       item.innerHTML = keysValues[index + 1][1][1];
     });
@@ -326,13 +330,13 @@ document.addEventListener('keyup', (e) => {
 document.addEventListener('keydown', (e) => {
   keysArray.forEach((item, index) => {
     if (e.code === keysValues[index][1][2]) {
-      item.style.backgroundColor = 'yellow';
+      item.style.background = '#FFFFFF';
     } else if (e.key.toUpperCase() === item.innerHTML.toUpperCase()) {
-      item.style.backgroundColor = 'yellow';
+      item.style.background = '#FFFFFF';
     } else if (e.key.toUpperCase() === keysValues[index][1][0]) {
-      item.style.backgroundColor = 'yellow';
+      item.style.background = '#FFFFFF';
     } else if (e.key.toUpperCase() === keysValues[index][1][1].toUpperCase()) {
-      item.style.backgroundColor = 'yellow';
+      item.style.background = '#FFFFFF';
     }
   });
 });
@@ -364,7 +368,7 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('mousedown', (e) => {
   if (e.target.classList.contains('key')) {
-    e.target.style.background = 'yellow';
+    e.target.style.backgroundColor = 'yellow';
   }
 });
 
@@ -380,9 +384,9 @@ document.addEventListener('keydown', (e) => {
   if (e.code === 'CapsLock') {
     capitalLettersArray.forEach((item) => {
       if (item.innerHTML !== item.innerHTML.toUpperCase()) {
-        item.innerHTML = item.innerHTML.toUpperCase();        
+        item.innerHTML = item.innerHTML.toUpperCase();
       } else {
-        item.innerHTML = item.innerHTML.toLowerCase();        
+        item.innerHTML = item.innerHTML.toLowerCase();
       }
     });
   }
@@ -390,39 +394,34 @@ document.addEventListener('keydown', (e) => {
 
 keyboardContent.addEventListener('click', (e) => {
   if (e.target.innerHTML === 'caps lock') {
-       capitalLettersArray.forEach((item) => {
+    capitalLettersArray.forEach((item) => {
       if (item.innerHTML !== item.innerHTML.toUpperCase()) {
         item.innerHTML = item.innerHTML.toUpperCase();
       } else {
-        item.innerHTML = item.innerHTML.toLowerCase();        
+        item.innerHTML = item.innerHTML.toLowerCase();
       }
     });
-  }  
+  }
 });
 
 // implement switch languages (en/ru)
 
-if (localStorage.getItem('lang')) {
-  const lang = localStorage.getItem('lang');
-  langEn = lang;
-}
-
 function changeBtn() {
   keysArray.forEach((item, index) => {
-    (item.innerHTML = keysValues[index][1][langEn]);
+    (item.innerHTML = keysValues[index][1][langCur]);
   });
 }
 
 document.onkeydown = function changeLang(event) {
-  if (event.code === 'ShiftLeft') {
-    document.onkeyup = function showLang(e) {
-      if (e.code === 'AltLeft') {
-        if (langEn === 0 || langEn === null || langEn === '0') {
-          langEn = 1;
+  if (event.code === 'ControlLeft') {
+    document.onkeyup = function showLang(target) {
+      if (target.code === 'AltLeft') {
+        if (langCur === 0 || langCur === null || langCur === '0') {
+          langCur = 1;
         } else {
-          langEn = 0;
+          langCur = 0;
         }
-        localStorage.setItem('lang', langEn);
+        localStorage.setItem('record', langCur);
         changeBtn();
       } else {
         document.onkeyup = null;
