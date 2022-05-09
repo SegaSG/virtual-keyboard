@@ -165,3 +165,120 @@ function addElements() {
   document.querySelector('.keyboard__info').append(keyboardInfoTextWin);
 }
 addElements();
+
+const arraySymbols = document.querySelectorAll('.key-symbol');
+const keysArray = document.querySelectorAll('.key');
+
+// implement text printing in textarea 
+
+class Foc {
+  constructor(field) {
+    this.field = field;
+  }
+  textFoc() {
+    this.field.focus();
+  }
+}
+
+const focus = new Foc(textarea);
+focus.textFoc();
+
+keyboardContent.addEventListener('click', (e) => {
+  if (e.target.classList.contains('key')) {
+    if (e.target.innerHTML === 'backspace') {
+      textarea.value = textarea.value.slice(0, -1);
+    } else if (e.target.innerHTML === 'del') {
+      textarea.value = textarea.value.slice(0, -1);
+    } else if (e.target.innerHTML === 'tab') {
+      textarea.value += '    ';
+    } else if (e.target.innerHTML === 'enter') {
+      textarea.value += '\n';
+    } else if (e.target.innerHTML === 'alt' || e.target.innerHTML === 'alt' || e.target.innerHTML === 'shift' || e.target.innerHTML === 'shift' || e.target.innerHTML === 'caps lock' || e.target.innerHTML === 'ctrl' || e.target.innerHTML === 'ctrl' || e.target.innerHTML === 'win' || e.target.innerHTML === 'shift') {
+      textarea.value += '';
+    } else {
+      textarea.value += e.target.innerHTML;
+    }
+  }
+});
+
+textarea.addEventListener('keydown', (e) => {
+  keysArray.forEach((item, index) => {
+    if (e.key.toUpperCase() === item.innerHTML.toUpperCase()) {
+      if (item.innerHTML === 'backspace') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'del') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'tab') {
+        e.preventDefault();
+        textarea.value += '    ';
+      } else if (item.innerHTML === 'enter') {
+        e.preventDefault();
+        textarea.value += '\n';
+      } else if (item.innerHTML === 'alt' || item.innerHTML === 'alt' || item.innerHTML === 'shift' || item.innerHTML === 'caps lock' || item.innerHTML === 'Ctrl' || item.innerHTML === 'ctrl' || item.innerHTML === 'win' || item.innerHTML === 'shift') {
+        textarea.value += '';
+      } else {
+        e.preventDefault();
+        e.currentTarget.value += item.innerHTML;
+      }
+    } else if (e.key.toUpperCase() === keysValues[index][1][0].toUpperCase()) {
+      if (item.innerHTML === 'backspace') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'del') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'tab') {
+        e.preventDefault();
+        textarea.value += '    ';
+      } else if (item.innerHTML === 'enter') {
+        e.preventDefault();
+        textarea.value += '\n';
+      } else if (item.innerHTML === 'alt' || item.innerHTML === 'alt' || item.innerHTML === 'shift' || item.innerHTML === 'CapsLock' || item.innerHTML === 'ctrl' || item.innerHTML === 'ctrl' || item.innerHTML === 'win' || item.innerHTML === 'shift') {
+        textarea.value += '';
+      } else {
+        e.preventDefault();
+        e.currentTarget.value += item.innerHTML;
+      }
+    } else if (e.key.toUpperCase() === keysValues[index][1][1].toUpperCase()) {
+      if (item.innerHTML === 'backspace') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'del') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'tab') {
+        e.preventDefault();
+        textarea.value += '    ';
+      } else if (item.innerHTML === 'enter') {
+        e.preventDefault();
+        textarea.value += '\n';
+      } else if (item.innerHTML === 'alt' || item.innerHTML === 'alt' || item.innerHTML === 'shift' || item.innerHTML === 'caps lock' || item.innerHTML === 'ctrl' || item.innerHTML === 'ctrl' || item.innerHTML === 'win' || item.innerHTML === 'shift') {
+        textarea.value += '';
+      } else {
+        e.preventDefault();
+        e.currentTarget.value += item.innerHTML;
+      }
+    } else if (e.key === keysValues[index][1][2]) {
+      if (item.innerHTML === 'backspace') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'del') {
+        e.preventDefault();
+        textarea.value = textarea.value.slice(0, -1);
+      } else if (item.innerHTML === 'tab') {
+        e.preventDefault();
+        textarea.value += '    ';
+      } else if (item.innerHTML === 'enter') {
+        e.preventDefault();
+        textarea.value += '\n';
+      } else if (item.innerHTML === 'alt' || item.innerHTML === 'alt' || item.innerHTML === 'shift' || item.innerHTML === 'caps lock' || item.innerHTML === 'ctrl' || item.innerHTML === 'ctrl' || item.innerHTML === 'win' || item.innerHTML === 'shift') {
+        textarea.value += '';
+      } else {
+        e.preventDefault();
+        e.currentTarget.value += item.innerHTML;
+      }
+    }
+  });
+});
