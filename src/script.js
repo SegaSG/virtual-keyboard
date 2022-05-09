@@ -299,3 +299,54 @@ document.addEventListener('keyup', (evn) => {
     });
   }
 });
+
+// implement animation when pressing the keyboard
+
+document.addEventListener('keyup', (e) => {
+  keysArray.forEach((item, index) => {
+    function keyAnimation() {
+      item.classList.remove('animate-keyboard');
+    }
+    if (e.code === keysValues[index][1][2] || e.key === keysValues[index][1][2]) {
+      item.classList.add('animate-keyboard');
+      item.addEventListener('animationend', keyAnimation, false);
+    } else if (e.key.toUpperCase() === item.innerHTML.toUpperCase()) {
+      item.classList.add('animate-keyboard');
+      item.addEventListener('animationend', keyAnimation, false);
+    } else if (e.key.toUpperCase() === keysValues[index][1][0]) {
+      item.classList.add('animate-keyboard');
+      item.addEventListener('animationend', keyAnimation, false);
+    } else if (e.key.toUpperCase() === keysValues[index][1][1].toUpperCase()) {
+      item.classList.add('animate-keyboard');
+      item.addEventListener('animationend', keyAnimation, false);
+    }
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  keysArray.forEach((item, index) => {
+    if (e.code === keysValues[index][1][2]) {
+      item.style.backgroundColor = 'yellow';
+    } else if (e.key.toUpperCase() === item.innerHTML.toUpperCase()) {
+      item.style.backgroundColor = 'yellow';
+    } else if (e.key.toUpperCase() === keysValues[index][1][0]) {
+      item.style.backgroundColor = 'yellow';
+    } else if (e.key.toUpperCase() === keysValues[index][1][1].toUpperCase()) {
+      item.style.backgroundColor = 'yellow';
+    }
+  });
+});
+
+document.addEventListener('keyup', (e) => {
+  keysArray.forEach((item, index) => {
+    if (e.code === keysValues[index][1][2]) {
+      item.style.backgroundColor = '#FFFFFF';
+    } else if (e.key.toUpperCase() === item.innerHTML.toUpperCase()) {
+      item.style.backgroundColor = '##FFFFFF';
+    } else if (e.key.toUpperCase() === keysValues[index][1][0]) {
+      item.style.backgroundColor = '#FFFFFF';
+    } else if (e.key.toUpperCase() === keysValues[index][1][1].toUpperCase()) {
+      item.style.backgroundColor = '#FFFFFF';
+    }
+  });
+});
