@@ -373,3 +373,29 @@ document.addEventListener('mouseup', (e) => {
     e.target.style.backgroundColor = '#FFFFFF';
   }
 });
+
+// implement animation on capslock click
+const capitalLettersArray = document.querySelectorAll('.capital-letter');
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'CapsLock') {
+    capitalLettersArray.forEach((item) => {
+      if (item.innerHTML !== item.innerHTML.toUpperCase()) {
+        item.innerHTML = item.innerHTML.toUpperCase();        
+      } else {
+        item.innerHTML = item.innerHTML.toLowerCase();        
+      }
+    });
+  }
+});
+
+keyboardContent.addEventListener('click', (e) => {
+  if (e.target.innerHTML === 'caps lock') {
+       capitalLettersArray.forEach((item) => {
+      if (item.innerHTML !== item.innerHTML.toUpperCase()) {
+        item.innerHTML = item.innerHTML.toUpperCase();
+      } else {
+        item.innerHTML = item.innerHTML.toLowerCase();        
+      }
+    });
+  }  
+});
