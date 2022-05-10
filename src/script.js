@@ -377,7 +377,7 @@ document.addEventListener('mouseup', (e) => {
 // implement animation on capslock click
 const capitalLettersArray = document.querySelectorAll('.capital-letter');
 document.addEventListener('keydown', (e) => {
-  if (e.code === 'caps lock') {
+  if (e.code === 'CapsLock') {
     capitalLettersArray.forEach((item) => {
       if (item.innerHTML !== item.innerHTML.toUpperCase()) {
         item.innerHTML = item.innerHTML.toUpperCase();
