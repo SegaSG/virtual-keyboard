@@ -310,6 +310,18 @@ document.addEventListener('keyup', (e) => {
   }
 });
 
+keyboardContent.addEventListener('click', (e) => {
+  if (e.target.innerHTML === 'shift') {
+    arraySymbols.forEach((item, index) => {
+      if (item.innerHTML !== keysValues[index][1][2]) {
+        item.innerHTML = keysValues[index][1][2];
+      } else {
+        item.innerHTML = keysValues[index][1][1];
+      }
+    });
+  }
+});
+
 // implement animation when pressing the keyboard
 
 document.addEventListener('keyup', (e) => {
