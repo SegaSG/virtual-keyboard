@@ -191,6 +191,7 @@ keyboardContent.addEventListener('click', (e) => {
       textarea.value = textarea.value.slice(textarea.value, 0);
     } else if (e.target.innerHTML === 'tab') {
       textarea.value += '    ';
+      textarea.focus();
     } else if (e.target.innerHTML === 'enter') {
       textarea.value += '\n';
       textarea.focus();
@@ -215,6 +216,7 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'tab') {
         e.preventDefault();
         textarea.value += '    ';
+        textarea.focus();
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
@@ -236,6 +238,7 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'tab') {
         e.preventDefault();
         textarea.value += '    ';
+        textarea.focus();
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
@@ -257,6 +260,7 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'tab') {
         e.preventDefault();
         textarea.value += '    ';
+        textarea.focus();
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
@@ -278,6 +282,7 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'tab') {
         e.preventDefault();
         textarea.value += '    ';
+        textarea.focus();
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
@@ -315,11 +320,14 @@ keyboardContent.addEventListener('click', (e) => {
     arraySymbols.forEach((item, index) => {
       if (item.innerHTML !== keysValues[index][1][2]) {
         item.innerHTML = keysValues[index][1][2];
+        e.preventDefault();
       } else {
         item.innerHTML = keysValues[index][1][1];
+        e.preventDefault();
       }
     });
   }
+  e.preventDefault();
 });
 
 // implement animation when pressing the keyboard
