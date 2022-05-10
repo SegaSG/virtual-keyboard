@@ -193,10 +193,12 @@ keyboardContent.addEventListener('click', (e) => {
       textarea.value += '    ';
     } else if (e.target.innerHTML === 'enter') {
       textarea.value += '\n';
+      textarea.focus();
     } else if (e.target.innerHTML === 'alt' || e.target.innerHTML === ' alt' || e.target.innerHTML === 'shift' || e.target.innerHTML === ' shift' || e.target.innerHTML === 'caps lock' || e.target.innerHTML === ' ctrl' || e.target.innerHTML === 'ctrl' || e.target.innerHTML === 'win' || e.target.innerHTML === ' shift') {
       textarea.value += '';
     } else {
       textarea.value += e.target.innerHTML;
+      textarea.focus();
     }
   }
 });
@@ -216,11 +218,13 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
+        textarea.focus();
       } else if (item.innerHTML === 'alt' || item.innerHTML === 'alt' || item.innerHTML === 'shift' || item.innerHTML === 'caps lock' || item.innerHTML === 'Ctrl' || item.innerHTML === 'ctrl' || item.innerHTML === 'win' || item.innerHTML === 'shift') {
         textarea.value += '';
       } else {
         e.preventDefault();
         e.currentTarget.value += item.innerHTML;
+        textarea.focus();
       }
     } else if (e.key.toUpperCase() === keysValues[index][1][0].toUpperCase()) {
       if (item.innerHTML === 'backspace') {
@@ -235,11 +239,13 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
+        textarea.focus();
       } else if (item.innerHTML === 'alt' || item.innerHTML === 'alt' || item.innerHTML === 'shift' || item.innerHTML === 'CapsLock' || item.innerHTML === 'ctrl' || item.innerHTML === 'ctrl' || item.innerHTML === 'win' || item.innerHTML === 'shift') {
         textarea.value += '';
       } else {
         e.preventDefault();
         e.currentTarget.value += item.innerHTML;
+        textarea.focus();
       }
     } else if (e.key.toUpperCase() === keysValues[index][1][1].toUpperCase()) {
       if (item.innerHTML === 'backspace') {
@@ -254,11 +260,13 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
+        textarea.focus();
       } else if (item.innerHTML === 'alt' || item.innerHTML === 'alt' || item.innerHTML === 'shift' || item.innerHTML === 'caps lock' || item.innerHTML === 'ctrl' || item.innerHTML === 'ctrl' || item.innerHTML === 'win' || item.innerHTML === 'shift') {
         textarea.value += '';
       } else {
         e.preventDefault();
         e.currentTarget.value += item.innerHTML;
+        textarea.focus();
       }
     } else if (e.key === keysValues[index][1][2]) {
       if (item.innerHTML === 'backspace') {
@@ -273,11 +281,13 @@ textarea.addEventListener('keydown', (e) => {
       } else if (item.innerHTML === 'enter') {
         e.preventDefault();
         textarea.value += '\n';
+        textarea.focus();
       } else if (item.innerHTML === 'alt' || item.innerHTML === ' alt' || item.innerHTML === 'shift' || item.innerHTML === 'caps lock' || item.innerHTML === 'ctrl' || item.innerHTML === ' ctrl' || item.innerHTML === 'win' || item.innerHTML === ' shift') {
         textarea.value += '';
       } else {
         e.preventDefault();
         e.currentTarget.value += item.innerHTML;
+        textarea.focus();
       }
     }
   });
